@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)file:///C:/Users/DELL/Downloads/index.html -->
+<html lang="en" data-theme="light"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InfoSquare — Nigeria's Favourite Blog</title>
+<link href="./index_files/css2" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream: #FBF8F3;
+  --dark: #1C1A17;
+  --coral: #E8603C;
+  --coral-light: #FAE8E1;
+  --teal: #2A8C72;
+  --teal-light: #D9F0E8;
+  --amber: #D98C2A;
+  --amber-light: #FAF0DC;
+  --purple: #7A5CF0;
+  --purple-light: #EAE4FD;
+  --blue: #2563EB;
+  --blue-light: #DBEAFE;
+  --pink: #DB2777;
+  --pink-light: #FCE7F3;
+  --green: #16A34A;
+  --green-light: #DCFCE7;
+  --orange: #EA580C;
+  --orange-light: #FFEDD5;
+  --text-muted: #7A7670;
+  --border: #E8E2D9;
+  --card-shadow: 0 2px 16px rgba(28,26,23,0.07);
+  --card-bg: #ffffff;
+  --nav-bg: #FBF8F3;
+}
+[data-theme="dark"] {
+  --cream: #141210;
+  --dark: #F0EDE8;
+  --coral-light: #2E1A14;
+  --teal-light: #0D2920;
+  --amber-light: #2A1F08;
+  --purple-light: #1E1740;
+  --blue-light: #1E3A5F;
+  --pink-light: #3D1029;
+  --green-light: #0D2D1A;
+  --orange-light: #2A1608;
+  --text-muted: #8A8680;
+  --border: #2A2722;
+  --card-shadow: 0 2px 16px rgba(0,0,0,0.3);
+  --card-bg: #1E1C19;
+  --nav-bg: #141210;
+}
+
+body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--dark); line-height:1.6; }
+
+/* ---- TOP BAR ---- */
+.top-bar {
+  background: var(--dark);
+  color: rgba(255,255,255,0.7);
+  font-size: 0.75rem;
+  text-align: center;
+  padding: 7px 1rem;
+  letter-spacing: 0.03em;
+}
+.top-bar strong { color: var(--coral); }
+
+/* ---- NAV ---- */
+nav {
+  position: sticky; top: 0;
+  background: var(--nav-bg);
+  border-bottom: 1.5px solid var(--border);
+  z-index: 200;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.logo {
+  font-family:'Fraunces',serif;
+  font-size: 1.55rem; font-weight:700; letter-spacing:-0.5px;
+  color: var(--dark); text-decoration:none;
+  display:flex; align-items:center; gap:10px;
+}
+.logo-icon {
+  width:34px; height:34px; background:var(--coral);
+  border-radius:8px; display:flex; align-items:center; justify-content:center;
+  color:white; font-size:0.95rem; font-weight:700; flex-shrink:0;
+  transform:rotate(-3deg); transition:transform 0.2s;
+}
+.logo:hover .logo-icon { transform:rotate(3deg); }
+
+.nav-links { display:flex; gap:1.6rem; list-style:none; align-items:center; }
+.nav-links a {
+  text-decoration:none; color:var(--text-muted);
+  font-size:0.85rem; font-weight:500; transition:color 0.2s;
+}
+.nav-links a:hover { color:var(--dark); }
+.nav-links .has-dropdown { position:relative; }
+.dropdown {
+  display:none; position:absolute; top:100%; left:0;
+  background:var(--card-bg); border:1.5px solid var(--border);
+  border-radius:12px; padding:0.5rem; min-width:180px;
+  box-shadow:var(--card-shadow); z-index:300; margin-top:6px;
+}
+.has-dropdown:hover .dropdown { display:block; }
+.dropdown a {
+  display:block; padding:8px 12px; border-radius:8px;
+  font-size:0.85rem; color:var(--dark) !important;
+  transition:background 0.15s;
+}
+.dropdown a:hover { background:var(--coral-light); color:var(--coral) !important; }
+
+.nav-cta {
+  background:var(--dark); color:white !important;
+  padding:7px 16px; border-radius:100px; font-size:0.82rem !important;
+  transition:background 0.2s !important;
+}
+.nav-cta:hover { background:var(--coral) !important; }
+
+.theme-toggle {
+  width:40px; height:22px; background:var(--border);
+  border-radius:100px; border:none; cursor:pointer;
+  position:relative; transition:background 0.3s; flex-shrink:0;
+}
+.theme-toggle::after {
+  content:''; position:absolute; top:3px; left:3px;
+  width:16px; height:16px; border-radius:50%;
+  background:var(--coral); transition:transform 0.3s;
+}
+[data-theme="dark"] .theme-toggle { background:#3A3632; }
+[data-theme="dark"] .theme-toggle::after { transform:translateX(18px); }
+
+.hamburger {
+  display:none; flex-direction:column; gap:5px;
+  background:none; border:none; cursor:pointer; padding:4px;
+}
+.hamburger span { width:22px; height:2px; background:var(--dark); border-radius:2px; transition:all 0.3s; }
+
+/* ---- CATEGORY PILL BAR ---- */
+.pill-bar {
+  background:var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto; white-space:nowrap;
+  padding: 0 2rem;
+  display:flex; gap:0.5rem; align-items:center;
+  scrollbar-width:none;
+}
+.pill-bar::-webkit-scrollbar { display:none; }
+.pill {
+  display:inline-flex; align-items:center; gap:5px;
+  padding: 9px 16px; border-radius:100px;
+  font-size:0.78rem; font-weight:600; letter-spacing:0.02em;
+  text-decoration:none; color:var(--text-muted);
+  border: 1.5px solid var(--border);
+  transition:all 0.2s; white-space:nowrap; flex-shrink:0;
+  cursor:pointer; background:transparent;
+}
+.pill:hover, .pill.active {
+  background:var(--dark); color:white; border-color:var(--dark);
+}
+
+/* ---- HERO ---- */
+.hero {
+  max-width:1200px; margin:0 auto;
+  padding: 3rem 2rem 1.5rem;
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:2.5rem; align-items:center;
+}
+.hero-eyebrow {
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--coral-light); color:var(--coral);
+  font-size:0.72rem; font-weight:600; letter-spacing:0.08em;
+  text-transform:uppercase; padding:4px 12px; border-radius:100px; margin-bottom:1rem;
+}
+.hero-title {
+  font-family:'Fraunces',serif; font-size:2.9rem;
+  line-height:1.1; font-weight:700; letter-spacing:-1px; margin-bottom:1rem;
+}
+.hero-title em { font-style:italic; color:var(--coral); }
+.hero-excerpt { color:var(--text-muted); font-size:1rem; margin-bottom:1.5rem; line-height:1.7; }
+.hero-meta { display:flex; align-items:center; gap:1rem; }
+.avatar {
+  width:38px; height:38px; border-radius:50%;
+  background:var(--teal-light); border:2px solid var(--teal);
+  display:flex; align-items:center; justify-content:center;
+  font-weight:600; font-size:0.82rem; color:var(--teal); flex-shrink:0;
+}
+.meta-info { font-size:0.82rem; }
+.meta-info strong { display:block; font-weight:600; }
+.meta-info span { color:var(--text-muted); }
+.read-btn {
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--coral); color:white; text-decoration:none;
+  padding:11px 22px; border-radius:100px; font-weight:600; font-size:0.88rem;
+  transition:transform 0.2s, background 0.2s; margin-top:1.3rem;
+}
+.read-btn:hover { transform:translateY(-2px); background:#d04f2d; }
+.hero-image {
+  border-radius:20px; overflow:hidden; aspect-ratio:16/10;
+  background:var(--coral-light); display:flex;
+  align-items:center; justify-content:center;
+  animation: fadeUp 0.7s 0.15s ease both;
+}
+.hero-content { animation: fadeUp 0.7s ease both; }
+
+/* ---- BREAKING TICKER ---- */
+.ticker-wrap {
+  background:var(--coral); color:white;
+  padding:8px 0; overflow:hidden; display:flex; gap:0;
+}
+.ticker-label {
+  background:var(--dark); color:white;
+  padding:0 1.2rem; font-size:0.72rem; font-weight:700;
+  letter-spacing:0.1em; text-transform:uppercase;
+  display:flex; align-items:center; flex-shrink:0; gap:6px;
+}
+.ticker-track {
+  display:flex; align-items:center; flex:1; overflow:hidden;
+}
+.ticker-inner {
+  display:flex; gap:3rem; animation:ticker 35s linear infinite;
+  white-space:nowrap; align-items:center;
+}
+.ticker-inner:hover { animation-play-state:paused; }
+.ticker-item { font-size:0.8rem; font-weight:500; padding-right:1rem; }
+.ticker-dot { color:rgba(255,255,255,0.5); }
+@keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ---- SECTION SHARED ---- */
+.container { max-width:1200px; margin:0 auto; padding:0 2rem; }
+.section { padding:2.5rem 0; }
+.section-header {
+  display:flex; align-items:baseline; justify-content:space-between;
+  margin-bottom:1.6rem; padding-bottom:0.8rem;
+  border-bottom:2px solid var(--border);
+}
+.section-title {
+  font-family:'Fraunces',serif; font-size:1.6rem;
+  font-weight:700; letter-spacing:-0.5px;
+  display:flex; align-items:center; gap:10px;
+}
+.section-title .s-tag {
+  font-size:0.7rem; font-weight:600; letter-spacing:0.06em;
+  text-transform:uppercase; padding:2px 10px; border-radius:100px;
+  background:var(--coral-light); color:var(--coral);
+  font-family:'DM Sans',sans-serif;
+}
+.view-all {
+  text-decoration:none; color:var(--coral);
+  font-size:0.82rem; font-weight:600;
+  display:flex; align-items:center; gap:4px; transition:gap 0.2s;
+}
+.view-all:hover { gap:8px; }
+
+/* ---- CARDS ---- */
+.posts-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; }
+.posts-grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem; }
+
+.post-card {
+  background:var(--card-bg); border-radius:14px; overflow:hidden;
+  box-shadow:var(--card-shadow); text-decoration:none; color:inherit;
+  transition:transform 0.25s, box-shadow 0.25s;
+  display:flex; flex-direction:column;
+  border:1px solid var(--border);
+}
+.post-card:hover { transform:translateY(-5px); box-shadow:0 12px 32px rgba(28,26,23,0.12); }
+
+.card-thumb {
+  height:150px; display:flex; align-items:center;
+  justify-content:center; font-size:2.8rem; position:relative;
+}
+.card-thumb-coral{background:var(--coral-light);}
+.card-thumb-teal{background:var(--teal-light);}
+.card-thumb-amber{background:var(--amber-light);}
+.card-thumb-purple{background:var(--purple-light);}
+.card-thumb-blue{background:var(--blue-light);}
+.card-thumb-pink{background:var(--pink-light);}
+.card-thumb-green{background:var(--green-light);}
+.card-thumb-orange{background:var(--orange-light);}
+
+.card-body { padding:1.1rem; flex:1; display:flex; flex-direction:column; }
+.tag {
+  display:inline-block; font-size:0.68rem; font-weight:600;
+  letter-spacing:0.06em; text-transform:uppercase;
+  padding:2px 9px; border-radius:100px; margin-bottom:0.65rem;
+}
+.tag-coral{background:var(--coral-light);color:var(--coral);}
+.tag-teal{background:var(--teal-light);color:var(--teal);}
+.tag-amber{background:var(--amber-light);color:var(--amber);}
+.tag-purple{background:var(--purple-light);color:var(--purple);}
+.tag-blue{background:var(--blue-light);color:var(--blue);}
+.tag-pink{background:var(--pink-light);color:var(--pink);}
+.tag-green{background:var(--green-light);color:var(--green);}
+.tag-orange{background:var(--orange-light);color:var(--orange);}
+
+.card-title {
+  font-family:'Fraunces',serif; font-size:1rem;
+  font-weight:600; line-height:1.35; margin-bottom:0.5rem;
+}
+.card-excerpt { font-size:0.82rem; color:var(--text-muted); line-height:1.55; flex:1; }
+.card-footer {
+  padding:0.75rem 1.1rem; border-top:1px solid var(--border);
+  display:flex; align-items:center; justify-content:space-between;
+  font-size:0.75rem; color:var(--text-muted);
+}
+.read-time { display:flex; align-items:center; gap:3px; }
+
+/* Featured wide card */
+.post-card-wide {
+  display:grid; grid-template-columns:200px 1fr;
+  border-radius:14px; overflow:hidden; background:var(--card-bg);
+  box-shadow:var(--card-shadow); text-decoration:none; color:inherit;
+  transition:transform 0.25s, box-shadow 0.25s;
+  border:1px solid var(--border);
+}
+.post-card-wide:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(28,26,23,0.1); }
+.post-card-wide .card-thumb { height:100%; min-height:130px; }
+
+/* ---- FEATURED SPLIT ---- */
+.featured-grid {
+  display:grid; grid-template-columns:2fr 1fr;
+  gap:1.4rem; align-items:start;
+}
+.feature-main {
+  border-radius:18px; overflow:hidden; background:var(--card-bg);
+  box-shadow:var(--card-shadow); text-decoration:none; color:inherit;
+  transition:transform 0.2s; border:1px solid var(--border);
+}
+.feature-main:hover { transform:translateY(-3px); }
+.feature-main-thumb {
+  height:260px; background:var(--teal-light);
+  display:flex; align-items:center; justify-content:center; font-size:5rem;
+}
+.feature-main-body { padding:1.5rem; }
+.feature-stack { display:flex; flex-direction:column; gap:1rem; }
+
+/* ---- CATEGORIES GRID ---- */
+.categories { background:var(--dark); padding:2.5rem 0; }
+.categories-inner { max-width:1200px; margin:0 auto; padding:0 2rem; }
+.categories-title {
+  font-family:'Fraunces',serif; font-size:1.5rem; font-weight:700;
+  color:white; margin-bottom:1.3rem;
+}
+.cat-grid {
+  display:grid;
+  grid-template-columns: repeat(6,1fr);
+  gap:0.85rem;
+}
+.cat-card {
+  border-radius:12px; padding:1.1rem 0.9rem;
+  cursor:pointer; transition:transform 0.2s, opacity 0.2s;
+  text-decoration:none; display:flex; flex-direction:column; gap:6px;
+}
+.cat-card:hover { transform:translateY(-3px); opacity:0.92; }
+.cat-card-coral{background:var(--coral);}
+.cat-card-teal{background:var(--teal);}
+.cat-card-amber{background:var(--amber);}
+.cat-card-purple{background:var(--purple);}
+.cat-card-blue{background:var(--blue);}
+.cat-card-pink{background:var(--pink);}
+.cat-card-green{background:var(--green);}
+.cat-card-orange{background:var(--orange);}
+.cat-icon { font-size:1.5rem; }
+.cat-name { font-weight:700; font-size:0.88rem; color:white; }
+.cat-count { font-size:0.72rem; color:rgba(255,255,255,0.65); }
+
+/* ---- TRENDING ---- */
+.trending-list { display:flex; flex-direction:column; gap:0; }
+.trending-item {
+  display:flex; align-items:flex-start; gap:1rem;
+  padding:1rem 0; border-bottom:1px solid var(--border);
+  text-decoration:none; color:inherit; transition:opacity 0.2s;
+}
+.trending-item:last-child { border-bottom:none; }
+.trending-item:hover { opacity:0.75; }
+.trending-num {
+  font-family:'Fraunces',serif; font-size:2rem; font-weight:700;
+  color:var(--border); line-height:1; flex-shrink:0; width:36px;
+}
+.trending-title {
+  font-family:'Fraunces',serif; font-size:0.95rem;
+  font-weight:600; line-height:1.35; margin-bottom:4px;
+}
+.trending-meta { font-size:0.75rem; color:var(--text-muted); }
+
+/* ---- SIDEBAR ---- */
+.main-with-sidebar { display:grid; grid-template-columns:1fr 320px; gap:2rem; }
+.sidebar { display:flex; flex-direction:column; gap:1.5rem; }
+.sidebar-block {
+  background:var(--card-bg); border-radius:14px; padding:1.25rem;
+  border:1px solid var(--border); box-shadow:var(--card-shadow);
+}
+.sidebar-title {
+  font-family:'Fraunces',serif; font-size:1.05rem; font-weight:700;
+  margin-bottom:1rem; padding-bottom:0.65rem; border-bottom:2px solid var(--border);
+}
+.sidebar-tag-cloud { display:flex; flex-wrap:wrap; gap:0.5rem; }
+.sidebar-tag {
+  padding:5px 12px; border-radius:100px; font-size:0.75rem; font-weight:600;
+  text-decoration:none; border:1.5px solid var(--border); color:var(--text-muted);
+  transition:all 0.2s;
+}
+.sidebar-tag:hover { background:var(--dark); color:white; border-color:var(--dark); }
+
+.social-links { display:flex; flex-direction:column; gap:0.6rem; }
+.social-link {
+  display:flex; align-items:center; gap:10px; padding:9px 12px;
+  border-radius:10px; text-decoration:none; font-size:0.85rem; font-weight:600;
+  transition:opacity 0.2s;
+}
+.social-link:hover { opacity:0.85; }
+.social-link.twitter { background:#000; color:white; }
+.social-link.email { background:var(--coral); color:white; }
+.social-link.phone { background:var(--teal); color:white; }
+.social-icon { width:20px; height:20px; flex-shrink:0; }
+
+/* ---- QUOTE ---- */
+.quote-block {
+  background:var(--teal); border-radius:18px; padding:2.5rem;
+  text-align:center; margin:2rem 0;
+}
+.quote-text {
+  font-family:'Fraunces',serif; font-size:1.7rem; font-weight:600;
+  font-style:italic; color:white; line-height:1.4; margin-bottom:0.75rem;
+}
+.quote-author { color:rgba(255,255,255,0.7); font-size:0.85rem; font-weight:500; }
+
+/* ---- NEWSLETTER ---- */
+.newsletter {
+  background: linear-gradient(135deg, var(--dark) 60%, #2E2A25);
+  border-radius:20px; padding:3rem; text-align:center;
+  margin:2rem 0; position:relative; overflow:hidden;
+}
+.newsletter::before {
+  content:'💌'; position:absolute; right:-10px; top:-10px;
+  font-size:8rem; opacity:0.05;
+}
+.newsletter h2 {
+  font-family:'Fraunces',serif; font-size:1.8rem; font-weight:700;
+  color:white; margin-bottom:0.6rem; letter-spacing:-0.5px;
+}
+.newsletter p { color:rgba(255,255,255,0.6); margin-bottom:1.5rem; font-size:0.92rem; }
+.newsletter-form { display:flex; gap:0.6rem; max-width:420px; margin:0 auto; }
+.newsletter-form input {
+  flex:1; padding:11px 16px; border:1.5px solid rgba(255,255,255,0.15);
+  border-radius:100px; font-family:'DM Sans',sans-serif; font-size:0.88rem;
+  outline:none; background:rgba(255,255,255,0.08); color:white; transition:border-color 0.2s;
+}
+.newsletter-form input::placeholder { color:rgba(255,255,255,0.4); }
+.newsletter-form input:focus { border-color:var(--coral); }
+.newsletter-form button {
+  background:var(--coral); color:white; border:none;
+  padding:11px 20px; border-radius:100px; font-family:'DM Sans',sans-serif;
+  font-weight:600; font-size:0.85rem; cursor:pointer; white-space:nowrap;
+  transition:background 0.2s, transform 0.2s;
+}
+.newsletter-form button:hover { background:#d04f2d; transform:scale(1.03); }
+
+/* ---- FOOTER ---- */
+footer { background:var(--dark); color:white; padding:3rem 2rem 1.5rem; margin-top:2rem; }
+.footer-inner {
+  max-width:1200px; margin:0 auto;
+  display:grid; grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:2.5rem; padding-bottom:2rem;
+  border-bottom:1px solid rgba(255,255,255,0.1);
+}
+.footer-logo {
+  font-family:'Fraunces',serif; font-size:1.4rem; font-weight:700;
+  margin-bottom:0.65rem; display:flex; align-items:center; gap:10px;
+}
+.footer-logo-icon {
+  width:30px; height:30px; background:var(--coral);
+  border-radius:7px; display:flex; align-items:center; justify-content:center;
+  font-size:0.8rem; font-weight:700; transform:rotate(-3deg);
+}
+.footer-desc { color:rgba(255,255,255,0.5); font-size:0.85rem; line-height:1.6; max-width:260px; margin-bottom:1rem; }
+.footer-contact { display:flex; flex-direction:column; gap:6px; margin-bottom:1rem; }
+.footer-contact a {
+  color:rgba(255,255,255,0.6); text-decoration:none; font-size:0.82rem;
+  transition:color 0.2s; display:flex; align-items:center; gap:6px;
+}
+.footer-contact a:hover { color:white; }
+.footer-contact-label { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.06em; color:rgba(255,255,255,0.35); margin-bottom:2px; }
+.footer-location { font-size:0.82rem; color:rgba(255,255,255,0.45); display:flex; align-items:center; gap:5px; }
+.footer-heading {
+  font-weight:600; font-size:0.78rem; letter-spacing:0.05em;
+  text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:1rem;
+}
+.footer-links { list-style:none; display:flex; flex-direction:column; gap:0.5rem; }
+.footer-links a {
+  text-decoration:none; color:rgba(255,255,255,0.65); font-size:0.85rem; transition:color 0.2s;
+}
+.footer-links a:hover { color:white; }
+.footer-bottom {
+  max-width:1200px; margin:1.2rem auto 0;
+  display:flex; align-items:center; justify-content:space-between;
+  font-size:0.78rem; color:rgba(255,255,255,0.3);
+}
+.footer-bottom a { color:rgba(255,255,255,0.4); text-decoration:none; }
+.footer-bottom a:hover { color:white; }
+.footer-bottom-links { display:flex; gap:1rem; }
+
+/* ---- SEARCH OVERLAY ---- */
+.search-overlay {
+  display:none; position:fixed; inset:0; z-index:500;
+  background:rgba(28,26,23,0.85); align-items:flex-start;
+  justify-content:center; padding-top:6rem;
+}
+.search-overlay.open { display:flex; }
+.search-box {
+  background:var(--card-bg); border-radius:16px; padding:1.5rem;
+  width:100%; max-width:560px; box-shadow:0 24px 64px rgba(0,0,0,0.25);
+}
+.search-input-wrap { display:flex; gap:0.5rem; align-items:center; }
+.search-input {
+  flex:1; padding:12px 16px; border:1.5px solid var(--border);
+  border-radius:100px; font-size:1rem; outline:none;
+  background:var(--cream); color:var(--dark);
+  font-family:'DM Sans',sans-serif;
+}
+.search-close {
+  background:var(--border); border:none; width:36px; height:36px;
+  border-radius:50%; cursor:pointer; font-size:1rem; color:var(--dark);
+  display:flex; align-items:center; justify-content:center; transition:background 0.2s;
+}
+.search-close:hover { background:var(--coral); color:white; }
+.search-hint { color:var(--text-muted); font-size:0.82rem; margin-top:0.75rem; }
+
+/* ---- MOBILE NAV DRAWER ---- */
+.mobile-nav {
+  display:none; position:fixed; inset:0; z-index:400;
+  background:var(--nav-bg); flex-direction:column;
+  padding:2rem; overflow-y:auto;
+}
+.mobile-nav.open { display:flex; }
+.mobile-nav-links { list-style:none; display:flex; flex-direction:column; gap:0.5rem; margin-top:1.5rem; }
+.mobile-nav-links a {
+  text-decoration:none; color:var(--dark); font-size:1.2rem;
+  font-weight:500; padding:0.6rem 0; border-bottom:1px solid var(--border);
+  display:block;
+}
+
+/* ---- ANIMATIONS ---- */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(20px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@keyframes float {
+  0%,100% { transform:translateY(0) rotate(0deg); }
+  50%  { transform:translateY(-8px) rotate(2deg); }
+}
+
+/* ---- RESPONSIVE ---- */
+@media(max-width:1024px) {
+  .cat-grid { grid-template-columns:repeat(4,1fr); }
+  .posts-grid-4 { grid-template-columns:repeat(2,1fr); }
+  .main-with-sidebar { grid-template-columns:1fr; }
+  .sidebar { display:grid; grid-template-columns:1fr 1fr; }
+  .footer-inner { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:768px) {
+  .hero { grid-template-columns:1fr; }
+  .posts-grid { grid-template-columns:1fr 1fr; }
+  .featured-grid { grid-template-columns:1fr; }
+  .cat-grid { grid-template-columns:repeat(3,1fr); }
+  .footer-inner { grid-template-columns:1fr; }
+  .nav-links { display:none; }
+  .hamburger { display:flex; }
+  .sidebar { grid-template-columns:1fr; }
+}
+@media(max-width:500px) {
+  .posts-grid { grid-template-columns:1fr; }
+  .posts-grid-4 { grid-template-columns:1fr; }
+  .cat-grid { grid-template-columns:repeat(2,1fr); }
+  .hero-title { font-size:2.1rem; }
+  .post-card-wide { grid-template-columns:1fr; }
+  .post-card-wide .card-thumb { height:130px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  🇳🇬 Your No.1 Source for <strong>News, Lifestyle &amp; More</strong> — Based in Lagos, Nigeria
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="logo">
+    <span class="logo-icon">IS</span>
+    InfoSquare
+  </a>
+  <ul class="nav-links">
+    <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="has-active">Home</a></li>
+    <li class="has-dropdown">
+      <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">News ▾</a>
+      <div class="dropdown">
+        <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Politics</a>
+        <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Economy</a>
+        <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Business</a>
+        <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Tech</a>
+        <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Crypto</a>
+        <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Sports</a>
+      </div>
+    </li>
+    <li class="has-dropdown">
+      <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Life ▾</a>
+      <div class="dropdown">
+        <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Lifestyle</a>
+        <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Health &amp; Wellness</a>
+        <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Fashion</a>
+        <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Relationships</a>
+        <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Gist Corner</a>
+      </div>
+    </li>
+    <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Reviews</a></li>
+    <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">About</a></li>
+    <li>
+      <button onclick="document.querySelector(&#39;.search-overlay&#39;).classList.add(&#39;open&#39;)" style="background:none;border:none;cursor:pointer;padding:4px;color:var(--text-muted);display:flex;align-items:center;" aria-label="Search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+      </button>
+    </li>
+    <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#newsletter" class="nav-cta">Subscribe</a></li>
+    <li>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button>
+    </li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div class="mobile-nav" id="mobileNav">
+  <div style="display:flex;justify-content:space-between;align-items:center;">
+    <span class="logo"><span class="logo-icon">IS</span> InfoSquare</span>
+    <button onclick="document.getElementById(&#39;mobileNav&#39;).classList.remove(&#39;open&#39;)" style="background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--dark);">✕</button>
+  </div>
+  <ul class="mobile-nav-links">
+    <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Home</a></li>
+    <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Politics</a></li>
+    <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Economy</a></li>
+    <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Business</a></li>
+    <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Sports</a></li>
+    <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Crypto</a></li>
+    <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Tech</a></li>
+    <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Lifestyle</a></li>
+    <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Health &amp; Wellness</a></li>
+    <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Fashion</a></li>
+    <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Relationships</a></li>
+    <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Gist Corner</a></li>
+    <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Reviews</a></li>
+    <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">About</a></li>
+  </ul>
+</div>
+
+<!-- CATEGORY PILLS -->
+<div class="pill-bar">
+  <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="pill">🏠 All</a>
+  <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="pill">🏛️ Politics</a>
+  <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="pill">💰 Economy</a>
+  <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="pill active">💼 Business</a>
+  <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="pill">⚽ Sports</a>
+  <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="pill">₿ Crypto</a>
+  <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="pill">💻 Tech</a>
+  <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="pill">✨ Lifestyle</a>
+  <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="pill">🌿 Health</a>
+  <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="pill">👗 Fashion</a>
+  <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="pill">💑 Relationships</a>
+  <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="pill">🔥 Gist Corner</a>
+  <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="pill">⭐ Reviews</a>
+</div>
+
+<!-- BREAKING NEWS TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-label">
+    <span style="width:8px;height:8px;background:white;border-radius:50%;animation:blink 1s infinite;display:inline-block;"></span>
+    BREAKING
+  </div>
+  <div class="ticker-track">
+    <div class="ticker-inner" id="ticker">
+      <span class="ticker-item">🏛️ Nigeria's inflation rate drops to 31.2% as CBN holds interest rate steady</span>
+      <span class="ticker-dot">•</span>
+      <span class="ticker-item">⚽ Super Eagles edge past South Africa 2-1 in AFCON qualifier</span>
+      <span class="ticker-dot">•</span>
+      <span class="ticker-item">₿ Bitcoin crosses $70,000 mark amid renewed institutional buying</span>
+      <span class="ticker-dot">•</span>
+      <span class="ticker-item">💻 MTN Nigeria launches AI-powered customer service platform</span>
+      <span class="ticker-dot">•</span>
+      <span class="ticker-item">💼 Lagos free trade zone records $2.1bn in new investments this quarter</span>
+      <span class="ticker-dot">•</span>
+      <span class="ticker-item">🏛️ Senate passes amended Electoral Act — key changes you need to know</span>
+      <span class="ticker-dot">•</span>
+      <span class="ticker-item">Nigeria's inflation rate drops to 31.2% as CBN holds interest rate steady</span>
+      <span class="ticker-dot">•</span>
+      <span class="ticker-item">Super Eagles edge past South Africa 2-1 in AFCON qualifier</span>
+      <span class="ticker-dot">•</span>
+      <span class="ticker-item">Bitcoin crosses $70,000 mark amid renewed institutional buying</span>
+      <span class="ticker-dot">•</span>
+      <span class="ticker-item">MTN Nigeria launches AI-powered customer service platform</span>
+      <span class="ticker-dot">•</span>
+      <span class="ticker-item">Lagos free trade zone records $2.1bn in new investments this quarter</span>
+      <span class="ticker-dot">•</span>
+      <span class="ticker-item">Senate passes amended Electoral Act — key changes you need to know</span>
+    </div>
+  </div>
+</div>
+<style>@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}</style>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#E8603C"></circle></svg>
+      Editor's Pick · Lifestyle
+    </div>
+    <h1 class="hero-title">Living Well in<br>a <em>World Full of</em><br>Distractions</h1>
+    <p class="hero-excerpt">How to slow down, find joy in the everyday, and build a life that actually feels like yours — one intentional choice at a time.</p>
+    <div class="hero-meta">
+      <div class="avatar">IS</div>
+      <div class="meta-info">
+        <strong>InfoSquare Editorial</strong>
+        <span>June 29, 2026 · 7 min read</span>
+      </div>
+    </div>
+    <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="read-btn">
+      Read Article
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+    </a>
+  </div>
+  <div class="hero-image">
+    <svg viewBox="0 0 520 340" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+      <rect width="520" height="340" fill="#FAE8E1"></rect>
+      <circle cx="420" cy="60" r="80" fill="#F5C4B3" opacity="0.5"></circle>
+      <circle cx="60" cy="280" r="60" fill="#F5C4B3" opacity="0.4"></circle>
+      <circle cx="260" cy="170" r="110" fill="white" opacity="0.3"></circle>
+      <rect x="130" y="80" width="175" height="215" rx="12" fill="white" opacity="0.95" style="animation:float 5s ease-in-out infinite"></rect>
+      <rect x="130" y="80" width="17" height="215" rx="6" fill="#E8603C"></rect>
+      <line x1="163" y1="130" x2="278" y2="130" stroke="#E8E2D9" stroke-width="2"></line>
+      <line x1="163" y1="155" x2="278" y2="155" stroke="#E8E2D9" stroke-width="2"></line>
+      <line x1="163" y1="180" x2="278" y2="180" stroke="#E8E2D9" stroke-width="2"></line>
+      <line x1="163" y1="205" x2="245" y2="205" stroke="#E8E2D9" stroke-width="2"></line>
+      <rect x="325" y="130" width="62" height="72" rx="10" fill="white" opacity="0.95"></rect>
+      <rect x="330" y="135" width="52" height="52" rx="8" fill="#FAE8E1"></rect>
+      <ellipse cx="356" cy="157" rx="18" ry="5" fill="#D85A30" opacity="0.4"></ellipse>
+      <path d="M387 148 Q405 148 405 163 Q405 178 387 178" stroke="white" stroke-width="4" fill="none" stroke-linecap="round"></path>
+      <ellipse cx="356" cy="204" rx="36" ry="7" fill="#F0997B" opacity="0.5"></ellipse>
+      <rect x="88" y="188" width="18" height="32" rx="4" fill="#D98C2A"></rect>
+      <ellipse cx="97" cy="183" rx="20" ry="16" fill="#2A8C72"></ellipse>
+      <!-- Nigeria flag colors accent -->
+      <rect x="440" y="280" width="55" height="8" rx="4" fill="#008751" opacity="0.6"></rect>
+      <rect x="440" y="268" width="55" height="8" rx="4" fill="white" opacity="0.6"></rect>
+    </svg>
+  </div>
+</div>
+
+<!-- LATEST STORIES -->
+<div class="container">
+  <div class="section">
+    <div class="section-header">
+      <h2 class="section-title">Latest Stories <span class="s-tag">Fresh</span></h2>
+      <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="view-all">View all →</a>
+    </div>
+    <div class="posts-grid">
+
+      <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="post-card">
+        <div class="card-thumb card-thumb-blue">🏛️</div>
+        <div class="card-body">
+          <span class="tag tag-blue">Politics</span>
+          <h3 class="card-title">The 2027 Succession Race: Who's Positioning Early?</h3>
+          <p class="card-excerpt">Power blocs are already forming. Here's what the political moves of the last 30 days actually mean.</p>
+        </div>
+        <div class="card-footer">
+          <span>June 29, 2026</span>
+          <span class="read-time">⏱ 6 min</span>
+        </div>
+      </a>
+
+      <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="post-card">
+        <div class="card-thumb card-thumb-green">⚽</div>
+        <div class="card-body">
+          <span class="tag tag-green">Sports</span>
+          <h3 class="card-title">Super Eagles Starting XI: The Formation Debate Nigerians Won't Drop</h3>
+          <p class="card-excerpt">Finidi's tactical choices are being dissected from Kano to Lagos. Here's the data behind the criticism.</p>
+        </div>
+        <div class="card-footer">
+          <span>June 28, 2026</span>
+          <span class="read-time">⏱ 5 min</span>
+        </div>
+      </a>
+
+      <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="post-card">
+        <div class="card-thumb card-thumb-orange">₿</div>
+        <div class="card-body">
+          <span class="tag tag-orange">Crypto</span>
+          <h3 class="card-title">Is This the Bitcoin Bull Run Nigerians Were Waiting For?</h3>
+          <p class="card-excerpt">P2P volumes are climbing. Naira devaluation is pushing people toward crypto. We break down the numbers.</p>
+        </div>
+        <div class="card-footer">
+          <span>June 28, 2026</span>
+          <span class="read-time">⏱ 8 min</span>
+        </div>
+      </a>
+
+      <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="post-card">
+        <div class="card-thumb card-thumb-teal">🌿</div>
+        <div class="card-body">
+          <span class="tag tag-teal">Health &amp; Wellness</span>
+          <h3 class="card-title">The Midday Rest Is Not Laziness — It's a Survival Skill</h3>
+          <p class="card-excerpt">Science is catching up with what our grandmothers always knew. Here's why you should take that afternoon nap.</p>
+        </div>
+        <div class="card-footer">
+          <span>June 27, 2026</span>
+          <span class="read-time">⏱ 4 min</span>
+        </div>
+      </a>
+
+      <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="post-card">
+        <div class="card-thumb card-thumb-pink">💑</div>
+        <div class="card-body">
+          <span class="tag tag-pink">Relationships</span>
+          <h3 class="card-title">Love Languages in a Lagos Marriage: What's Really Getting Lost</h3>
+          <p class="card-excerpt">Hustle culture, traffic, and financial stress are quietly killing intimacy. A therapist speaks openly.</p>
+        </div>
+        <div class="card-footer">
+          <span>June 26, 2026</span>
+          <span class="read-time">⏱ 7 min</span>
+        </div>
+      </a>
+
+      <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="post-card">
+        <div class="card-thumb card-thumb-purple">💻</div>
+        <div class="card-body">
+          <span class="tag tag-purple">Tech</span>
+          <h3 class="card-title">Nigerian Startups That Quietly Raised Funding This Quarter</h3>
+          <p class="card-excerpt">While headlines chased the big names, these five companies secured deals that could reshape their sectors.</p>
+        </div>
+        <div class="card-footer">
+          <span>June 25, 2026</span>
+          <span class="read-time">⏱ 6 min</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<div class="categories">
+  <div class="categories-inner">
+    <h2 class="categories-title">Browse by Topic</h2>
+    <div class="cat-grid">
+      <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="cat-card cat-card-blue">
+        <span class="cat-icon">🏛️</span>
+        <span class="cat-name">Politics</span>
+        <span class="cat-count">38 articles</span>
+      </a>
+      <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="cat-card cat-card-amber">
+        <span class="cat-icon">💰</span>
+        <span class="cat-name">Economy</span>
+        <span class="cat-count">29 articles</span>
+      </a>
+      <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="cat-card cat-card-green">
+        <span class="cat-icon">⚽</span>
+        <span class="cat-name">Sports</span>
+        <span class="cat-count">44 articles</span>
+      </a>
+      <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="cat-card cat-card-orange">
+        <span class="cat-icon">₿</span>
+        <span class="cat-name">Crypto</span>
+        <span class="cat-count">22 articles</span>
+      </a>
+      <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="cat-card cat-card-purple">
+        <span class="cat-icon">💻</span>
+        <span class="cat-name">Tech</span>
+        <span class="cat-count">31 articles</span>
+      </a>
+      <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="cat-card cat-card-coral">
+        <span class="cat-icon">✨</span>
+        <span class="cat-name">Lifestyle</span>
+        <span class="cat-count">26 articles</span>
+      </a>
+      <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="cat-card cat-card-teal">
+        <span class="cat-icon">🌿</span>
+        <span class="cat-name">Health</span>
+        <span class="cat-count">19 articles</span>
+      </a>
+      <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="cat-card cat-card-pink">
+        <span class="cat-icon">👗</span>
+        <span class="cat-name">Fashion</span>
+        <span class="cat-count">17 articles</span>
+      </a>
+      <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="cat-card cat-card-pink" style="background:var(--pink);">
+        <span class="cat-icon">💑</span>
+        <span class="cat-name">Relationships</span>
+        <span class="cat-count">14 articles</span>
+      </a>
+      <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="cat-card" style="background:#9333EA;">
+        <span class="cat-icon">🔥</span>
+        <span class="cat-name">Gist Corner</span>
+        <span class="cat-count">52 articles</span>
+      </a>
+      <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="cat-card" style="background:#0891B2;">
+        <span class="cat-icon">💼</span>
+        <span class="cat-name">Business</span>
+        <span class="cat-count">33 articles</span>
+      </a>
+      <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="cat-card" style="background:#65A30D;">
+        <span class="cat-icon">⭐</span>
+        <span class="cat-name">Reviews</span>
+        <span class="cat-count">28 articles</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT + SIDEBAR -->
+<div class="container">
+  <div class="section">
+    <div class="main-with-sidebar">
+
+      <!-- MAIN FEED -->
+      <div>
+        <!-- Trending / Featured Split -->
+        <div class="section-header">
+          <h2 class="section-title">🔥 Gist Corner <span class="s-tag">Hot</span></h2>
+          <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="view-all">More gist →</a>
+        </div>
+        <div class="featured-grid" style="margin-bottom:2rem;">
+          <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="feature-main">
+            <div class="feature-main-thumb">🔥</div>
+            <div class="feature-main-body">
+              <span class="tag tag-pink">Gist Corner</span>
+              <h2 style="font-family:&#39;Fraunces&#39;,serif;font-size:1.45rem;font-weight:700;line-height:1.3;margin-bottom:0.6rem;">Skit Makers vs. Traditional Comedians: Who's Winning the Money Game in 2026?</h2>
+              <p style="color:var(--text-muted);font-size:0.88rem;line-height:1.65;">Instagram reels. TikTok. YouTube. The money has moved — and so have the audiences. We sat down with five creators to find out what the numbers really look like.</p>
+              <div style="display:flex;align-items:center;gap:0.5rem;margin-top:1rem;font-size:0.78rem;color:var(--text-muted);">
+                <span>June 29, 2026</span>
+                <span>·</span>
+                <span>⏱ 9 min read</span>
+              </div>
+            </div>
+          </a>
+          <div class="feature-stack">
+            <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="post-card">
+              <div class="card-thumb card-thumb-orange" style="height:100px;">🎬</div>
+              <div class="card-body">
+                <span class="tag tag-orange">Gist</span>
+                <h3 class="card-title">Nollywood's Biggest 2026 Budget Films, Ranked</h3>
+              </div>
+              <div class="card-footer"><span>June 27</span><span class="read-time">⏱ 4 min</span></div>
+            </a>
+            <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="post-card">
+              <div class="card-thumb card-thumb-purple" style="height:100px;">🎵</div>
+              <div class="card-body">
+                <span class="tag tag-purple">Entertainment</span>
+                <h3 class="card-title">Afrobeats Is Now the World's Fastest Growing Genre — What Next?</h3>
+              </div>
+              <div class="card-footer"><span>June 26</span><span class="read-time">⏱ 6 min</span></div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Economy Section -->
+        <div class="section-header">
+          <h2 class="section-title">💰 Economy &amp; Business</h2>
+          <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="view-all">View all →</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem;">
+          <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="post-card-wide">
+            <div class="card-thumb card-thumb-amber">💰</div>
+            <div class="card-body" style="padding:1.1rem;">
+              <span class="tag tag-amber">Economy</span>
+              <h3 class="card-title">Fuel Subsidy Removal: One Year Later — The Real Impact on Nigerian Families</h3>
+              <p class="card-excerpt">From Balogun Market traders to Abuja civil servants, we tracked 12 families over 12 months to find out what really changed.</p>
+              <div style="font-size:0.75rem;color:var(--text-muted);margin-top:0.5rem;">June 29, 2026 · ⏱ 12 min</div>
+            </div>
+          </a>
+          <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="post-card-wide">
+            <div class="card-thumb card-thumb-blue">📈</div>
+            <div class="card-body" style="padding:1.1rem;">
+              <span class="tag tag-blue">Business</span>
+              <h3 class="card-title">Why Nigerian SMEs Are Borrowing at 28% — And What It's Doing to Ambition</h3>
+              <p class="card-excerpt">High interest rates are choking small businesses. But some entrepreneurs are finding creative workarounds.</p>
+              <div style="font-size:0.75rem;color:var(--text-muted);margin-top:0.5rem;">June 27, 2026 · ⏱ 8 min</div>
+            </div>
+          </a>
+          <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="post-card-wide">
+            <div class="card-thumb card-thumb-green">🏗️</div>
+            <div class="card-body" style="padding:1.1rem;">
+              <span class="tag tag-green">Business</span>
+              <h3 class="card-title">Real Estate in Lagos 2026: Where the Smart Money Is Going</h3>
+              <p class="card-excerpt">Ibeju-Lekki vs. Epe vs. Sangotedo — property analysts break down which areas offer the best return today.</p>
+              <div style="font-size:0.75rem;color:var(--text-muted);margin-top:0.5rem;">June 25, 2026 · ⏱ 10 min</div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Fashion & Lifestyle -->
+        <div class="section-header">
+          <h2 class="section-title">👗 Fashion &amp; Lifestyle</h2>
+          <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="view-all">View all →</a>
+        </div>
+        <div class="posts-grid-4" style="margin-bottom:2rem;">
+          <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="post-card">
+            <div class="card-thumb card-thumb-pink">👗</div>
+            <div class="card-body">
+              <span class="tag tag-pink">Fashion</span>
+              <h3 class="card-title">Ankara in 2026: 10 Fresh Styles Redefining Lagos Street Fashion</h3>
+            </div>
+            <div class="card-footer"><span>June 28</span><span class="read-time">⏱ 5 min</span></div>
+          </a>
+          <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="post-card">
+            <div class="card-thumb card-thumb-coral">✨</div>
+            <div class="card-body">
+              <span class="tag tag-coral">Lifestyle</span>
+              <h3 class="card-title">How to Live Well on a Budget in Lagos Without Feeling Like You're Missing Out</h3>
+            </div>
+            <div class="card-footer"><span>June 27</span><span class="read-time">⏱ 6 min</span></div>
+          </a>
+          <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="post-card">
+            <div class="card-thumb card-thumb-amber">💄</div>
+            <div class="card-body">
+              <span class="tag tag-amber">Beauty</span>
+              <h3 class="card-title">The Nigerian Skincare Boom: Local Brands Worth Every Kobo</h3>
+            </div>
+            <div class="card-footer"><span>June 26</span><span class="read-time">⏱ 4 min</span></div>
+          </a>
+          <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="post-card">
+            <div class="card-thumb card-thumb-teal">🍽️</div>
+            <div class="card-body">
+              <span class="tag tag-teal">Lifestyle</span>
+              <h3 class="card-title">Best Restaurants in Lagos Right Now: The InfoSquare Hit List</h3>
+            </div>
+            <div class="card-footer"><span>June 24</span><span class="read-time">⏱ 7 min</span></div>
+          </a>
+        </div>
+
+        <!-- Reviews -->
+        <div class="section-header">
+          <h2 class="section-title">⭐ Reviews</h2>
+          <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="view-all">All reviews →</a>
+        </div>
+        <div class="posts-grid" style="margin-bottom:2rem;">
+          <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="post-card">
+            <div class="card-thumb card-thumb-purple">📱</div>
+            <div class="card-body">
+              <span class="tag tag-purple">Tech Review</span>
+              <h3 class="card-title">Samsung Galaxy S25 Review: Is It Worth the Price in Nigeria?</h3>
+              <p class="card-excerpt">We tested it for 3 weeks in Lagos heat, traffic, and low network zones. Honest verdict inside.</p>
+            </div>
+            <div class="card-footer"><span>June 28</span><span class="read-time">⏱ 9 min</span></div>
+          </a>
+          <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="post-card">
+            <div class="card-thumb card-thumb-orange">🎬</div>
+            <div class="card-body">
+              <span class="tag tag-orange">Movie Review</span>
+              <h3 class="card-title">A Tribe Called Judah 2: Does It Live Up to the Hype?</h3>
+              <p class="card-excerpt">The sequel arrives with enormous expectations. We watched it twice and here's our unfiltered take.</p>
+            </div>
+            <div class="card-footer"><span>June 26</span><span class="read-time">⏱ 6 min</span></div>
+          </a>
+          <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="post-card">
+            <div class="card-thumb card-thumb-green">🎵</div>
+            <div class="card-body">
+              <span class="tag tag-green">Album Review</span>
+              <h3 class="card-title">Burna Boy's Latest Album: Track by Track Breakdown</h3>
+              <p class="card-excerpt">The African Giant drops another project. Here's every song scored and dissected for context.</p>
+            </div>
+            <div class="card-footer"><span>June 22</span><span class="read-time">⏱ 11 min</span></div>
+          </a>
+        </div>
+
+        <!-- Trending Numbers -->
+        <div class="section-header">
+          <h2 class="section-title">📊 Trending This Week</h2>
+        </div>
+        <div class="trending-list">
+          <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="trending-item">
+            <span class="trending-num">01</span>
+            <div>
+              <div class="trending-title">Naira Strengthens to ₦1,530/$1 — What Triggered the Surge?</div>
+              <div class="trending-meta">Economy · 14.2k reads this week</div>
+            </div>
+          </a>
+          <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="trending-item">
+            <span class="trending-num">02</span>
+            <div>
+              <div class="trending-title">Super Eagles AFCON 2027 Squad Predictions: Who Makes the Cut?</div>
+              <div class="trending-meta">Sports · 11.8k reads</div>
+            </div>
+          </a>
+          <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="trending-item">
+            <span class="trending-num">03</span>
+            <div>
+              <div class="trending-title">10 Signs Your Lagos Relationship Is Built on Convenience, Not Love</div>
+              <div class="trending-meta">Relationships · 9.4k reads</div>
+            </div>
+          </a>
+          <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="trending-item">
+            <span class="trending-num">04</span>
+            <div>
+              <div class="trending-title">Ethereum vs. Solana: Which Should Nigerian Investors Pick in 2026?</div>
+              <div class="trending-meta">Crypto · 8.1k reads</div>
+            </div>
+          </a>
+          <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="trending-item">
+            <span class="trending-num">05</span>
+            <div>
+              <div class="trending-title">The Real Reason Your Hair Is Breaking Off — A Dermatologist Explains</div>
+              <div class="trending-meta">Health · 7.6k reads</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+
+        <!-- Connect with us -->
+        <div class="sidebar-block">
+          <div class="sidebar-title">Connect With Us</div>
+          <div class="social-links">
+            <a href="https://x.com/InfoSquareBlog" target="_blank" class="social-link twitter">
+              <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+              @InfoSquareBlog
+            </a>
+            <a href="mailto:infosquareblog@gmail.com" class="social-link email">
+              <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+              infosquareblog@gmail.com
+            </a>
+            <a href="tel:07084204820" class="social-link phone">
+              <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6 19.79 19.79 0 0 1 1.62 5 2 2 0 0 1 3.59 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.1a16 16 0 0 0 6 6l.92-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17z"></path></svg>
+              07084204820
+            </a>
+          </div>
+          <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);">
+            <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);margin-bottom:4px;">Location</div>
+            <div style="font-size:0.85rem;color:var(--dark);display:flex;align-items:center;gap:5px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              Lekki, Lagos, Nigeria 🇳🇬
+            </div>
+          </div>
+        </div>
+
+        <!-- Hot in Gist -->
+        <div class="sidebar-block">
+          <div class="sidebar-title">🔥 Hot in Gist Corner</div>
+          <div class="trending-list">
+            <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="trending-item" style="padding:0.7rem 0;">
+              <span class="trending-num" style="font-size:1.3rem;width:26px;">01</span>
+              <div>
+                <div class="trending-title" style="font-size:0.85rem;">Davido Announces Surprise Collaboration with Beyoncé</div>
+                <div class="trending-meta" style="font-size:0.7rem;">3.2k shares today</div>
+              </div>
+            </a>
+            <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="trending-item" style="padding:0.7rem 0;">
+              <span class="trending-num" style="font-size:1.3rem;width:26px;">02</span>
+              <div>
+                <div class="trending-title" style="font-size:0.85rem;">BBNaija Season 9 Housemates Finally Revealed</div>
+                <div class="trending-meta" style="font-size:0.7rem;">5.7k reactions</div>
+              </div>
+            </a>
+            <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="trending-item" style="padding:0.7rem 0;">
+              <span class="trending-num" style="font-size:1.3rem;width:26px;">03</span>
+              <div>
+                <div class="trending-title" style="font-size:0.85rem;">Comedian Basket Mouth's New Documentary: The Real Story</div>
+                <div class="trending-meta" style="font-size:0.7rem;">2.1k reads</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Topics -->
+        <div class="sidebar-block">
+          <div class="sidebar-title">Browse Topics</div>
+          <div class="sidebar-tag-cloud">
+            <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="sidebar-tag">🏛️ Politics</a>
+            <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="sidebar-tag">💰 Economy</a>
+            <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="sidebar-tag">⚽ Sports</a>
+            <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="sidebar-tag">₿ Crypto</a>
+            <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="sidebar-tag">💻 Tech</a>
+            <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="sidebar-tag">✨ Lifestyle</a>
+            <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="sidebar-tag">🌿 Health</a>
+            <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="sidebar-tag">👗 Fashion</a>
+            <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="sidebar-tag">💑 Relationships</a>
+            <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="sidebar-tag">🔥 Gist</a>
+            <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="sidebar-tag">💼 Business</a>
+            <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#" class="sidebar-tag">⭐ Reviews</a>
+          </div>
+        </div>
+
+        <!-- Mini Newsletter -->
+        <div class="sidebar-block" style="background:var(--coral);color:white;border-color:var(--coral);">
+          <div style="font-family:&#39;Fraunces&#39;,serif;font-size:1.1rem;font-weight:700;margin-bottom:0.5rem;color:white;">Get Our Weekly Digest</div>
+          <p style="font-size:0.82rem;color:rgba(255,255,255,0.8);margin-bottom:1rem;">Top stories delivered to your inbox every Sunday.</p>
+          <input id="sidebarEmail" type="email" placeholder="your@email.com" style="width:100%;padding:9px 14px;border-radius:100px;border:none;font-size:0.85rem;outline:none;margin-bottom:0.5rem;font-family:&#39;DM Sans&#39;,sans-serif;">
+          <button onclick="sidebarSub()" style="width:100%;padding:9px;border-radius:100px;border:none;background:var(--dark);color:white;font-weight:600;font-size:0.85rem;cursor:pointer;font-family:&#39;DM Sans&#39;,sans-serif;transition:opacity 0.2s;" id="sidebarBtn">Subscribe Free →</button>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+</div>
+
+<!-- QUOTE -->
+<div class="container">
+  <div class="quote-block">
+    <p class="quote-text">"Stay informed. Stay inspired. <br>Stay rooted — but never stand still."</p>
+    <p class="quote-author">— InfoSquare</p>
+  </div>
+</div>
+
+<!-- NEWSLETTER -->
+<div class="container" id="newsletter">
+  <div class="newsletter">
+    <h2>Join the InfoSquare Circle</h2>
+    <p>Real stories. Real Nigeria. Delivered to your inbox every Sunday morning.</p>
+    <div class="newsletter-form">
+      <input type="email" id="newsEmail" placeholder="your@email.com">
+      <button onclick="mainSub()" id="mainSubBtn">Subscribe Free</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">
+        <span class="footer-logo-icon">IS</span>
+        InfoSquare
+      </div>
+      <p class="footer-desc">Nigeria's favourite all-round blog covering news, lifestyle, health, crypto, sports, entertainment, fashion, business, politics, and more — from the heart of Lagos.</p>
+      <div class="footer-contact">
+        <div>
+          <div class="footer-contact-label">Email</div>
+          <a href="mailto:infosquareblog@gmail.com">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+            infosquareblog@gmail.com
+          </a>
+        </div>
+        <div>
+          <div class="footer-contact-label">Phone / WhatsApp</div>
+          <a href="tel:07084204820">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.6 19.79 19.79 0 0 1 1.62 5 2 2 0 0 1 3.59 3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.1a16 16 0 0 0 6 6l.92-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17z"></path></svg>
+            07084204820
+          </a>
+        </div>
+        <div>
+          <div class="footer-contact-label">X (Twitter)</div>
+          <a href="https://x.com/InfoSquareBlog" target="_blank">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+            @InfoSquareBlog
+          </a>
+        </div>
+      </div>
+      <div class="footer-location">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        Lekki, Lagos, Nigeria 🇳🇬
+      </div>
+    </div>
+
+    <div>
+      <p class="footer-heading">News</p>
+      <ul class="footer-links">
+        <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Politics</a></li>
+        <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Economy</a></li>
+        <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Business</a></li>
+        <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Tech</a></li>
+        <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Crypto</a></li>
+        <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Sports</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="footer-heading">Life</p>
+      <ul class="footer-links">
+        <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Lifestyle</a></li>
+        <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Health &amp; Wellness</a></li>
+        <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Fashion</a></li>
+        <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Relationships</a></li>
+        <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Gist Corner</a></li>
+        <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Reviews</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="footer-heading">Company</p>
+      <ul class="footer-links">
+        <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">About InfoSquare</a></li>
+        <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Write for Us</a></li>
+        <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Advertise</a></li>
+        <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Newsletter</a></li>
+        <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Contact Us</a></li>
+        <li><a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Careers</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 InfoSquare. Made with <em style="color:var(--coral);font-style:normal;">♥</em> in Lagos, Nigeria</span>
+    <div class="footer-bottom-links">
+      <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Privacy Policy</a>
+      <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Terms of Use</a>
+      <a href="file:///C:/Users/DELL/Downloads/InfoSquare_Blog.html#">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-box">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2" style="flex-shrink:0"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+      <input class="search-input" id="searchInput" placeholder="Search InfoSquare..." autofocus="">
+      <button class="search-close" onclick="document.querySelector(&#39;.search-overlay&#39;).classList.remove(&#39;open&#39;)">✕</button>
+    </div>
+    <div class="search-hint">Try: "crypto", "Super Eagles", "Lagos business", "relationships"</div>
+  </div>
+</div>
+
+<script>
+  // Dark mode
+  const toggle = document.getElementById('themeToggle');
+  const html = document.documentElement;
+  const saved = localStorage.getItem('infosquare-theme');
+  if (saved) html.setAttribute('data-theme', saved);
+  toggle.addEventListener('click', () => {
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    const next = isDark ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('infosquare-theme', next);
+  });
+
+  // Hamburger
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mobileNav').classList.add('open');
+  });
+
+  // Search overlay close on backdrop click
+  document.getElementById('searchOverlay').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('searchOverlay')) {
+      document.getElementById('searchOverlay').classList.remove('open');
+    }
+  });
+
+  // Close search on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') document.getElementById('searchOverlay').classList.remove('open');
+  });
+
+  // Category pills toggle
+  document.querySelectorAll('.pill').forEach(p => {
+    p.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.querySelectorAll('.pill').forEach(x => x.classList.remove('active'));
+      p.classList.add('active');
+    });
+  });
+
+  // Main newsletter
+  function mainSub() {
+    const input = document.getElementById('newsEmail');
+    const btn = document.getElementById('mainSubBtn');
+    if (input.value && input.value.includes('@')) {
+      btn.textContent = '✓ You\'re in!';
+      btn.style.background = '#2A8C72';
+      input.disabled = true; btn.disabled = true;
+      input.value = ''; input.placeholder = 'See you Sunday!';
+    } else {
+      input.style.borderColor = 'var(--coral)';
+      setTimeout(() => { input.style.borderColor = ''; }, 2000);
+    }
+  }
+
+  // Sidebar newsletter
+  function sidebarSub() {
+    const input = document.getElementById('sidebarEmail');
+    const btn = document.getElementById('sidebarBtn');
+    if (input.value && input.value.includes('@')) {
+      btn.textContent = '✓ Subscribed!';
+      btn.style.background = '#2A8C72';
+      input.disabled = true; btn.disabled = true;
+      input.value = '';
+    }
+  }
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href="#newsletter"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('newsletter').scrollIntoView({ behavior:'smooth' });
+    });
+  });
+</script>
+
+
+</body></html>
